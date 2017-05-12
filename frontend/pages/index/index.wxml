@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="title">
+        <button class="left" bindtap="add">新增</button>
+        <input type="text" name="username" placeholder="username" />
+        <text class="right">2017-05-09 18:09:00</text>
+    </view>
+    <view  bindtap="bindViewTap" class="userinfo">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+    <view wx:for="{{users}}" class="user-data">
+        <text class="user-motto">{{users.username}}</text>
+        <text class="user-motto">{{users.password}}</text>
+        <text class="user-motto">{{users.nickname}}</text>
+        <button class="user-update" bindtap="update">编辑</button>
+        <button class="user-delete" bindtap="delete">删除</button>
+    </view>
+    <view wx:if="{{!users.length}}" class="no-data">没有数据～</view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="section">
+            <view class="section__title">username：</view>
+            <input name="username" placeholder="username" />
+        </view>
+        <view class="section">
+            <view class="section__title">password：</view>
+            <input name="password" placeholder="password" />
+        </view>
+        <view class="section">
+            <view class="section__title">nickname：</view>
+            <input name="nickname" placeholder="nickname" />
+        </view>
+        <view class="section">
+            <button class="ctl-btn" formType="submit">提交</button>
+            <button class="ctl-btn" formType="reset">重置</button>
+        </view>
+    </form>
+</view>
